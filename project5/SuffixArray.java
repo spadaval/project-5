@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+// a string that knows its position in the original string, basically.
 class Suffix {
   String str;
   int index;
@@ -23,6 +24,14 @@ class Suffix {
   }
 }
 
+/**
+ * An implementation of a bucket-based radix-sort.
+ * Buckets are stored in a map to avoid allocating memory for characters that
+ * aren't actually present.
+ * If the string has no character at a particular index, it goes into the
+ * `start` list. These strings will be placed before any other strings in the
+ * returned output.
+ */
 class Buckets {
   LinkedList<Suffix> start = new LinkedList<>();
   Map<Character, LinkedList<Suffix>> buckets = new HashMap<>();
@@ -74,6 +83,7 @@ class Buckets {
 
 public class SuffixArray {
   public ArrayList<Integer> construct(String S) {
+    System.out.println(S);
     List<Suffix> strings = IntStream.range(0, S.length()).boxed().map(i -> new Suffix(S.substring(i), i))
         .collect(Collectors.toList());
 

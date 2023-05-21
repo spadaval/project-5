@@ -115,7 +115,6 @@ public class SuffixArray {
 
     for (int i = S.length() - 1; i >= 0; i--) {
       strings = BucketSorter.sort(strings, i, S.length());
-      System.out.println(strings);
     }
     // Collections.sort(strings, (a, b) -> a.str.compareTo(b.str));
 

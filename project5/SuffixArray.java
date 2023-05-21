@@ -93,7 +93,6 @@ class BucketSorter {
    */
   public static List<Suffix> sort(List<Suffix> strings, int index, int maxSize) {
     assert index >= 0 && index < maxSize;
-    System.out.println(index);
     int longestStringLength = strings.stream().map(it -> it.str.length()).max(Integer::compareTo).get();
     if (longestStringLength < index)
       return strings;
@@ -116,6 +115,7 @@ public class SuffixArray {
 
     for (int i = S.length() - 1; i >= 0; i--) {
       strings = BucketSorter.sort(strings, i, S.length());
+      System.out.println(strings);
     }
     // Collections.sort(strings, (a, b) -> a.str.compareTo(b.str));
 
